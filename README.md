@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://everfund.com"> <img alt="Everfund" width="350" src="./docs/logo.svg#gh-light-mode-only"/>
-   <img alt="Everfund" width="350" src="./docs/logo-dark.svg#gh-dark-mode-only"/>
+  <a href="https://everfund.com"> 
+   <img alt="Everfund" width="350" src="./docs/logo.svg"/>
    </a>
   <h1 align="center">Full-stack engineer technical test</h1>
 </p>
