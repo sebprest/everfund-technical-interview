@@ -66,6 +66,7 @@ Then change into that directory and start the development server:
 
 ```
 cd technical-interview
+yarn rw prisma migrate reset
 yarn redwood dev
 ```
 
