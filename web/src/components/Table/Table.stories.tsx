@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 // When you've added props to your component,
 // pass Storybook's `args` through this story to control it from the addons panel:
 //
