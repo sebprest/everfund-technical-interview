@@ -11,7 +11,6 @@ This is the technical screening is part of Everfund's interview process for full
 ## About Everfund
 Everfund is the dev-first donation platform for modern nonprofits. Use a composable SDK to take control of all the components needed for modern donations, without building from scratch. Save time and integrate the best donation experiences faster to help nonprofits focus more on their causes.
 
----
 
 ## Objective
 
@@ -20,7 +19,6 @@ This technical test requires you to assemble a dashboard view for a mock payment
 
 This project consists of a basic **Redwood** application, written in **TypeScript with strict mode enabled**. The application is split into _web_ and _api_ directories.
 
----
 ## Tasks
 
 ### Primary
@@ -40,7 +38,6 @@ If you have time remaining, it would be good to see you tackle the following ext
 
 We understand and appreciate that there are many different approaches to these problems, and opportunities to showcase individuality. Please feel free to lean on NPM libaries to help complete the objectives. Specifically, you need to be able to explain your approach, including architectual decisions and use of any libraries. Show us what you can do!
 
----
 ## Things to make note of
 
 - The terms donation and payment are used interchangably throughout this document and codebase. Typically, a donation is a payment with additional metadata.
@@ -52,7 +49,6 @@ We understand and appreciate that there are many different approaches to these p
 - The non-profit that is selected can be accessed through the **React** context that is found at _MainLayout.context.tsx_.
 - Look out for **TODO** comments; they may help to guide your approach, although it is also valid to disregard their advice.
 
----
 ## Get Started
 **Prerequisites**
 
