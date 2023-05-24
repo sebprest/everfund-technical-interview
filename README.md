@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://everfund.com"> 
+  <a href="https://everfund.com">
    <img alt="Everfund" width="350" src="./docs/logo.svg"/>
    </a>
   <h1 align="center">Full-stack engineer technical test</h1>
@@ -34,7 +34,7 @@ We expect completion of the following primary tasks:
 If you have time remaining, it would be good to see you tackle the following extension tasks:
 1. Replace table columns with iconography (This can be done with [heroicons](https://heroicons.com/) as it's already installed) or other styling to best display the data stored in those columns.
 2. Add additional stats cards to the dashboard, choosing other stats that you feel may be useful to a non-profit worker.
-3. Add a "Top Donations" component to the dashboard, which shows the top 5 donations ever made to the selected non-profit.
+3. Design and implement an additional component of your choosing, which you feel will be useful to a non-profit worker. This is your opportunity to demonstrate creative and technical flair!
 
 We understand and appreciate that there are many different approaches to these problems, and opportunities to showcase individuality. Please feel free to lean on NPM libaries to help complete the objectives. Specifically, you need to be able to explain your approach, including architectual decisions and use of any libraries. Show us what you can do!
 
