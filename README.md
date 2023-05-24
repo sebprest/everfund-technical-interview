@@ -59,13 +59,13 @@ We understand and appreciate that there are many different approaches to these p
 Start by installing dependencies:
 
 ```
+cd technical-interview
 yarn install
 ```
 
 Then change into that directory and start the development server:
 
 ```
-cd technical-interview
 yarn rw prisma migrate reset
 yarn redwood dev
 ```
