@@ -34,12 +34,12 @@ export const schema = gql`
     payment(id: Int!): Payment @requireAuth
 
     "Fetch the total number of Payments."
-    paymentsCount: Int! @requireAuth
+    paymentsCount(nonprofitId: Int!): Int! @requireAuth
 
     "Fetch the total donations amount."
-    totalDonationsAmount: Int! @requireAuth
+    totalDonationsAmount(nonprofitId: Int!): Int! @requireAuth
 
     "Fetch the percentage of donations giftaided."
-    percentageGiftaided: Int! @requireAuth
+    percentageGiftaided(nonprofitId: Int!): Int! @requireAuth
   }
 `

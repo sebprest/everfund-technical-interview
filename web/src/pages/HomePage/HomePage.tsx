@@ -3,6 +3,7 @@ import { useQuery, MetaTags } from '@redwoodjs/web'
 import Stats from 'src/components/Stats/Stats'
 import { HomePageStats } from './types'
 import Table from 'src/components/Table/Table'
+import { useNonProfitContext } from 'src/layouts/MainLayout/MainLayout.context'
 
 const formatDonationsAmount = (amount: number) => {
   // TODO: Add support for other currencies
@@ -17,8 +18,9 @@ const formatDonationDate = (date: string) => {
 }
 
 const HomePage = () => {
+  const { nonprofit, setNonProfit } = useNonProfitContext()
   const GET_HOMEPAGE_STATS = gql`
-    query GetHomepageStats {
+    query GetHomepageStats($nonprofitId: Int!) {
       payments {
         id
         amountPaid
@@ -26,13 +28,21 @@ const HomePage = () => {
         giftAided
         status
       }
-      paymentsCount
-      totalDonationsAmount
-      percentageGiftaided
+      paymentsCount(nonprofitId: $nonprofitId)
+      totalDonationsAmount(nonprofitId: $nonprofitId)
+      percentageGiftaided(nonprofitId: $nonprofitId)
     }
   `
 
-  const { data, error, loading } = useQuery<HomePageStats>(GET_HOMEPAGE_STATS)
+  const { data, error, loading } = useQuery<HomePageStats>(
+    GET_HOMEPAGE_STATS,
+    {
+      variables:
+        {
+          nonprofitId: nonprofit.id
+        }
+    }
+  )
 
   if (loading) {
     return <div>Loading stats...</div>
