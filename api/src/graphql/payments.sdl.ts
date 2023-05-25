@@ -33,6 +33,9 @@ export const schema = gql`
     "Fetch a Payment by id."
     payment(id: Int!): Payment @requireAuth
 
+    "Fetch Payments by nonprofitId."
+    paymentsByNonprofitId(nonprofitId: Int!): [Payment!]! @requireAuth
+
     "Fetch the total number of Payments."
     paymentsCount(nonprofitId: Int!): Int! @requireAuth
 

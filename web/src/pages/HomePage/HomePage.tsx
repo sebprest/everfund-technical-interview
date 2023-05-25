@@ -21,7 +21,7 @@ const HomePage = () => {
   const { nonprofit, setNonProfit } = useNonProfitContext()
   const GET_HOMEPAGE_STATS = gql`
     query GetHomepageStats($nonprofitId: Int!) {
-      payments {
+      paymentsByNonprofitId(nonprofitId: $nonprofitId) {
         id
         amountPaid
         date
@@ -108,7 +108,7 @@ const HomePage = () => {
             </Table.tr>
           </Table.thead>
           <Table.tbody>
-            {data.payments.map((payment) => (
+            {data.paymentsByNonprofitId.map((payment) => (
               <Table.tr>
                 <Table.td>{payment.id}</Table.td>
                 <Table.td>{formatDonationsAmount(payment.amountPaid)}</Table.td>

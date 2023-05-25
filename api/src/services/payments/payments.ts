@@ -15,6 +15,12 @@ export const payment: QueryResolvers['payment'] = ({ id }) => {
   })
 }
 
+export const paymentsByNonprofitId: QueryResolvers['paymentsByNonprofitId'] = ({ nonprofitId }) => {
+  return db.payment.findMany({
+    where: { nonprofitId },
+  })
+}
+
 export const paymentsCount: QueryResolvers['paymentsCount'] = async ({ nonprofitId }) => {
   return db.payment.count({ where: { nonprofitId }})
 }

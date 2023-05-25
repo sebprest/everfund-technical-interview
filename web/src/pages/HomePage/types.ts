@@ -10,5 +10,5 @@ export interface HomePageStats {
   paymentsCount: number
   totalDonationsAmount: number
   percentageGiftaided: number
-  payments: Payment[]
+  paymentsByNonprofitId: Payment[]
 }
