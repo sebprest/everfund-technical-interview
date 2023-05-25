@@ -2,6 +2,7 @@ import { useQuery, MetaTags } from '@redwoodjs/web'
 
 import Stats from 'src/components/Stats/Stats'
 import { HomePageStats } from './types'
+import Table from 'src/components/Table/Table'
 
 const formatDonationsAmount = (amount: number) => {
   // TODO: Add support for other currencies
@@ -11,9 +12,20 @@ const formatDonationsAmount = (amount: number) => {
   }).format(amount / 100)
 }
 
+const formatDonationDate = (date: string) => {
+  return new Intl.DateTimeFormat('en-GB').format(new Date(date))
+}
+
 const HomePage = () => {
   const GET_HOMEPAGE_STATS = gql`
     query GetHomepageStats {
+      payments {
+        id
+        amountPaid
+        date
+        giftAided
+        status
+      }
       paymentsCount
       totalDonationsAmount
       percentageGiftaided
@@ -75,32 +87,28 @@ const HomePage = () => {
       </div>
 
       <div className="relative h-96 overflow-hidden rounded-xl border border-dashed border-gray-400 opacity-75">
-        {/*
-         * TODO: Replace this component with a table component that is already supplied in the components folder
-         * */}
-        <svg
-          className="absolute inset-0 h-full w-full stroke-gray-900/10"
-          fill="none"
-        >
-          <defs>
-            <pattern
-              id="pattern-003a54e1-93b5-4534-9ccb-0ed8812b8270"
-              x="0"
-              y="0"
-              width="10"
-              height="10"
-              patternUnits="userSpaceOnUse"
-            >
-              <path d="M-3 13 15-5M-5 5l18-18M-1 21 17 3"></path>
-            </pattern>
-          </defs>
-          <rect
-            stroke="none"
-            fill="url(#pattern-003a54e1-93b5-4534-9ccb-0ed8812b8270)"
-            width="100%"
-            height="100%"
-          ></rect>
-        </svg>
+        <Table.table>
+          <Table.thead>
+            <Table.tr>
+              <Table.th>ID</Table.th>
+              <Table.th>Amount Paid</Table.th>
+              <Table.th>Date</Table.th>
+              <Table.th>Gift Aided</Table.th>
+              <Table.th>Status</Table.th>
+            </Table.tr>
+          </Table.thead>
+          <Table.tbody>
+            {data.payments.map((payment) => (
+              <Table.tr>
+                <Table.td>{payment.id}</Table.td>
+                <Table.td>{formatDonationsAmount(payment.amountPaid)}</Table.td>
+                <Table.td>{formatDonationDate(payment.date)}</Table.td>
+                <Table.td>{payment.giftAided ? 'O' : ''}</Table.td>
+                <Table.td>{payment.status}</Table.td>
+              </Table.tr>
+            ))}
+          </Table.tbody>
+        </Table.table>
       </div>
     </>
   )
