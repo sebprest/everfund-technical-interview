@@ -22,13 +22,14 @@ export const paymentsByNonprofitId: QueryResolvers['paymentsByNonprofitId'] = ({
 }
 
 export const paymentsCount: QueryResolvers['paymentsCount'] = async ({ nonprofitId }) => {
-  return db.payment.count({ where: { nonprofitId }})
+  return db.payment.count({ where: { nonprofitId, status: 'succeeded' }})
 }
 
 export const totalDonationsAmount: QueryResolvers['totalDonationsAmount'] = async ({ nonprofitId }) => {
   const result = await db.payment.aggregate({
     where: {
       nonprofitId,
+      status: 'succeeded'
     },
     _sum: {
       amountPaid: true,
@@ -39,11 +40,12 @@ export const totalDonationsAmount: QueryResolvers['totalDonationsAmount'] = asyn
 };
 
 export const percentageGiftaided: QueryResolvers['percentageGiftaided'] = async ({ nonprofitId }) => {
-  const totalCount = await db.payment.count({ where: { nonprofitId }})
+  const totalCount = await db.payment.count({ where: { nonprofitId, status: 'succeeded' }})
 
   const giftAidedCount = await db.payment.aggregate({
     where: {
       nonprofitId,
+      status: 'succeeded'
     },
     _count: {
       giftAided: true,
