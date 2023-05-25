@@ -3,10 +3,19 @@ import { useQuery, MetaTags } from '@redwoodjs/web'
 import Stats from 'src/components/Stats/Stats'
 import { HomePageStats } from './types'
 
+const formatDonationsAmount = (amount: number) => {
+  // TODO: Add support for other currencies
+  return new Intl.NumberFormat('en-GB', {
+    style: 'currency',
+    currency: 'GBP',
+  }).format(amount / 100)
+}
+
 const HomePage = () => {
   const GET_HOMEPAGE_STATS = gql`
     query GetHomepageStats {
       paymentsCount
+      totalDonationsAmount
     }
   `
 
@@ -28,7 +37,7 @@ const HomePage = () => {
     { name: 'Total Donations', statistic: String(data.paymentsCount) },
     {
       name: 'Total Donations Amount',
-      statistic: '£20.50',
+      statistic: formatDonationsAmount(data.totalDonationsAmount),
     },
     {
       name: 'Donations with Gift Aid (%)',
