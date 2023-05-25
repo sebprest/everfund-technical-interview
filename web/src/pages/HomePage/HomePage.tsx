@@ -110,7 +110,7 @@ const HomePage = () => {
           </Table.thead>
           <Table.tbody>
             {data.paymentsByNonprofitId.map((payment) => (
-              <Table.tr>
+              <Table.tr key={payment.id}>
                 <Table.td>{payment.id}</Table.td>
                 <Table.td>{formatDonationsAmount(payment.amountPaid)}</Table.td>
                 <Table.td>{formatDonationDate(payment.date)}</Table.td>
