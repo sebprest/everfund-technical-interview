@@ -38,5 +38,8 @@ export const schema = gql`
 
     "Fetch the total donations amount."
     totalDonationsAmount: Int! @requireAuth
+
+    "Fetch the percentage of donations giftaided."
+    percentageGiftaided: Int! @requireAuth
   }
 `

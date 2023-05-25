@@ -16,6 +16,7 @@ const HomePage = () => {
     query GetHomepageStats {
       paymentsCount
       totalDonationsAmount
+      percentageGiftaided
     }
   `
 
@@ -41,7 +42,7 @@ const HomePage = () => {
     },
     {
       name: 'Donations with Gift Aid (%)',
-      statistic: '57%',
+      statistic: `${data.percentageGiftaided}%`,
     },
   ]
 

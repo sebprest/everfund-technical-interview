@@ -28,3 +28,15 @@ export const totalDonationsAmount: QueryResolvers['totalDonationsAmount'] = asyn
 
   return result._sum.amountPaid || 0;
 };
+
+export const percentageGiftaided: QueryResolvers['percentageGiftaided'] = async () => {
+  const totalCount = await db.payment.count()
+
+  const giftAidedCount = await db.payment.aggregate({
+    _count: {
+      giftAided: true,
+    },
+  });
+
+  return Math.round((giftAidedCount._count.giftAided / totalCount) * 100);
+}
