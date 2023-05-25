@@ -5,6 +5,7 @@ import { HomePageStats } from './types'
 import Table from 'src/components/Table/Table'
 import { useNonProfitContext } from 'src/layouts/MainLayout/MainLayout.context'
 import { CheckIcon } from '@heroicons/react/20/solid'
+import PaymentStatusDisplay from './PaymentStatusDisplay/PaymentStatusDisplay'
 
 const formatDonationsAmount = (amount: number) => {
   // TODO: Add support for other currencies
@@ -115,7 +116,7 @@ const HomePage = () => {
                 <Table.td>{formatDonationsAmount(payment.amountPaid)}</Table.td>
                 <Table.td>{formatDonationDate(payment.date)}</Table.td>
                 <Table.td>{payment.giftAided ? <CheckIcon height='24'/> : ''}</Table.td>
-                <Table.td>{payment.status}</Table.td>
+                <Table.td><PaymentStatusDisplay status={payment.status} /></Table.td>
               </Table.tr>
             ))}
           </Table.tbody>

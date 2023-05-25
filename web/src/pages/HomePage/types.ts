@@ -1,8 +1,10 @@
+export type PaymentStatus = 'succeeded' | 'failed' | 'pending' | 'incomplete'
+
 interface Payment {
   id: number
   date: string
   amountPaid: number
-  status: string
+  status: PaymentStatus
   giftAided: boolean
 }
 
