@@ -1,14 +1,31 @@
-import { MetaTags } from '@redwoodjs/web'
+import { useQuery, MetaTags } from '@redwoodjs/web'
 
 import Stats from 'src/components/Stats/Stats'
-// import { useNonProfitContext } from 'src/layouts/MainLayout/MainLayout.context'
+import { HomePageStats } from './types'
 
 const HomePage = () => {
-  // How to pull the nonpofit ID form context
-  // const { nonprofit, setNonProfit } = useNonProfitContext()
+  const GET_HOMEPAGE_STATS = gql`
+    query GetHomepageStats {
+      paymentsCount
+    }
+  `
+
+  const { data, error, loading } = useQuery<HomePageStats>(GET_HOMEPAGE_STATS)
+
+  if (loading) {
+    return <div>Loading stats...</div>
+  }
+
+  if(error || !data) {
+    return (
+      <div className='text-red-500'>
+        {error?.message || 'There was an error loading stats!'}
+      </div>
+    )
+  }
 
   const homepageStats = [
-    { name: 'Total Donations', statistic: '42' },
+    { name: 'Total Donations', statistic: String(data.paymentsCount) },
     {
       name: 'Total Donations Amount',
       statistic: '£20.50',

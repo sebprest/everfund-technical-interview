@@ -32,5 +32,8 @@ export const schema = gql`
 
     "Fetch a Payment by id."
     payment(id: Int!): Payment @requireAuth
+
+    "Fetch the total number of Payments."
+    paymentsCount: Int! @requireAuth
   }
 `

@@ -14,3 +14,7 @@ export const payment: QueryResolvers['payment'] = ({ id }) => {
     },
   })
 }
+
+export const paymentsCount: QueryResolvers['paymentsCount'] = () => {
+  return db.payment.count()
+}
