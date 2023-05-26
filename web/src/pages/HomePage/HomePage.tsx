@@ -19,6 +19,8 @@ const formatDonationDate = (date: string) => {
   return new Intl.DateTimeFormat('en-GB').format(new Date(date))
 }
 
+const PAYMENTS_TO_DISPLAY = 20
+
 const HomePage = () => {
   const { nonprofit, setNonProfit } = useNonProfitContext()
   const GET_HOMEPAGE_STATS = gql`
@@ -98,7 +100,7 @@ const HomePage = () => {
         </h2>
       </div>
 
-      <div className="relative h-96 overflow-hidden rounded-xl border border-dashed border-gray-400 opacity-75">
+      <div className="relative rounded-xl border border-dashed border-gray-400 opacity-75">
         <Table.table>
           <Table.thead>
             <Table.tr>
@@ -110,8 +112,8 @@ const HomePage = () => {
             </Table.tr>
           </Table.thead>
           <Table.tbody>
-            {data.paymentsByNonprofitId.map((payment) => (
-              <Table.tr key={payment.id}>
+            {data.paymentsByNonprofitId.slice(0, PAYMENTS_TO_DISPLAY).map((payment) => (
+              <Table.tr key={payment.id} data-testid='payment-table-row'>
                 <Table.td>{payment.id}</Table.td>
                 <Table.td>{formatDonationsAmount(payment.amountPaid)}</Table.td>
                 <Table.td>{formatDonationDate(payment.date)}</Table.td>
